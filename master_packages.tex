@@ -1,0 +1,162 @@
+% LATEX PROJECTS OF REFERENCE
+
+% HEAD OPTIONS: select one or paste it in the main.latex
+%\documentclass[11pt,a4paper]{article}
+%\documentclass[10pt,spaish]{amsart}
+
+% LANGUAGE
+% Set the font (input) encoding
+% \usepackage[utf8]{inputenc} % To add accents (\'a) and letter Ñ (\~n). Is no longer required (since 2018).
+% Set the font (output) encoding
+\usepackage[T1]{fontenc}
+% Specific commands
+\usepackage[spanish, english]{babel} % Adjust the key words and labels for example "Chapter" a "Capítulo". Select multiple lenguages with \selectlanguage{}, this command is open.
+\spanishdecimal{.} % Usar punto como separador decimal en vez de coma. Is incompatible con [russian]{babel}. Necessary.
+
+% MATH PACKAGES
+\usepackage{amsmath} % Para el entorno matemático. Esencial.
+\usepackage{amsfonts} % Para usar \Bbb y \mathbb con R,Q,C etc.
+\usepackage{amssymb} % Para simbolos especiales.
+\usepackage{amsthm} % Herramientas para definición de teoremas, lemas, etc.
+\usepackage{mathtools} % Proporciona mejoras y extensiones para el entorno matemático en comparación con el paquete estándar amsmath.(lo carga automáticamente). Author: Lars Madsen.
+\usepackage{accents} % 04.06.2024 Para escrbir un acento encima de un símbolo de congruencia o equivalencia con \accentset{}.
+
+% ARROW DIAGRAMS (CATEGORY THEORY) AND KNOTS
+\usepackage[all,knot,cmtip]{xy}
+
+% COMENTARIES (21.07.2024)
+\usepackage{comment} % For multiline comentaries.
+
+% MARGINS AND ORIENTATION
+% Change the orientation of the page.
+\usepackage{lscape}
+% Adjust the margins.
+\usepackage{geometry}
+% Style A
+\newcommand{\geometryA}{\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}}
+% Style B
+\newcommand{\geometryB}{\geometry{margin=2cm}}
+% Choose a style
+\geometryA
+
+% CUSTOMIZED ENUMERATE PAGES [TESTED]
+\usepackage{fancyhdr} % Personaliza los encabezados y pies de página.
+\setlength{\headheight}{12.9pt} % Solves the problem in overleaf: Package fancyhdr Warning: \headheight is too small (12.0pt).
+\usepackage{lastpage} % Obtiene automáticamente el número total de páginas.
+\pagestyle{fancy} % Para las funciones de fancyhdr como cfoot, rfoot, etc.
+\cfoot{} % Limpiar el centro del pie de página
+\rfoot{página \thepage{} de \pageref{LastPage}} % Número de página a la derecha
+
+% IMAGES
+\usepackage{graphicx} % Allows the use of command includegraphics{}
+% Specify the path to your image folder. Paste in main.tex.
+% \graphicspath{{./images/}}
+
+% TABLES
+\usepackage{float} % To use [H]
+\usepackage{multirow} % To use \multirow{nrows}{width}{text}
+%\usepackage{booktabs} % SIAM format for tables. Obs. El SIAM tiene macros de latex!
+
+% ADVANCED TYPOGRAPHY
+% For text
+\usepackage{calligra} % Tipo de fuente cursiva. Use \calligra.
+% For math text
+\usepackage{mathrsfs} % Latras estilizadas en diagonal. Use \mathscr{}. 
+\usepackage{euscript} % Letras estilizadas rectas. Use \EuScript{}.
+\usepackage{tgcursor} % Tipo de fuente monoespaciada basada en la fuente Courier. Es parte de la colección de fuentes TeX Gyre. Use \texttt{}.
+\usepackage{MnSymbol} % Modifica el estilo de los símbolos matemáticos.
+
+% COLOR
+\usepackage[table,xcdraw]{xcolor} % Color font. 
+% To use definecolor{}{}{} % Defines custom color.
+% To use textcolor{}{} % Changes the color of text.
+% table: To use \rowcolor[HTML]{E0E0E0} which fills a row.
+% xcdraw: works with tikz, to use \fill[xcdraw] neverteless \draw is better.
+
+% ENUMERATIONS AND LISTS
+% Redefinition of label format in numbered list: 1), 2), etc.
+\renewcommand{\labelenumi}{{\arabic{enumi}}}
+
+% TEXT VERBATIM
+\usepackage{verbatim} % It seems not necessary.
+\usepackage{fancyvrb} % Used to display literal text that must respect the exact formatting, including spaces and line breaks. Use with: \begin{Verbatim}, \VerbatimInput{}.
+
+
+% BIBLIOGRAPHY. Select one.
+% 1. BIBLATEX
+%\usepackage{biblatex}
+\begin{comment}
+- In main.tex out of \document: \addbibresource{referencias.bib}
+- You cite with: parentcite{} or cite{}
+- At the end of \document: \printbibliography
+- This package is run using the program biber instead of biblatex. For more information see
+    * https://tex.stackexchange.com/questions/406205/no-citation-bibdata-or-bibstyle-command
+    * https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib/299286
+\end{comment}
+
+% 2. NATBIB
+% Load natbib with options for enumerate, order and compress cites in text: "1, 2, 3" -> "1-3".
+\usepackage[sort&compress]{natbib}
+% Select a style: plain, unsrt, abbrv, acm, alpha, apalike, ieeetr, siam.
+\bibliographystyle{unsrt}
+\begin{comment}
+- You cite with: citep{} or cite{}
+- At the end of \document: \bibliography{referencias}{}
+- Print all cites (including non referenced): \nocite{*} 
+\end{comment}
+
+% ALGORITHM Select one.
+% ALGORITHM2E
+\usepackage[ruled,vlined]{algorithm2e}
+\begin{comment}
+To write algorithms with a stylized format. 
+- ruled: Adds a horizontal ruler at the top and bottom of the algorithm.
+- vlined: Adds vertical lines in the algorithm blocks.
+- Use begin{algorithm}.
+- For comments: out of environment \SetKwComment{Comment}{/* }{ */}, into the environment \Comment*[r]{}
+\end{comment}
+
+% ALGPSEUDOCODE
+%\usepackage{algpseudocode} % Use \begin{algorithmic}.
+%\usepackage{algorithm} % Environment tipe float, table or figure. Use \begin{algorithm}.
+
+% ALGORITHMIC
+%\usepackage{algcompatible} % Use \begin{algorithmic}.
+
+% ALGORITHMIC
+%\usepackage{algorithmic} % Use \begin{algorithmic}.
+
+\usepackage{listings} % Allows to display source code with syntax highlighting. Use \begin{lstlisting}, \lstinline|| \lstset{}.
+
+% HYPERLINKS
+\usepackage{hyperref} % Interactive links, for links, urls, etc.
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+} % Configuration.
+%\usepackage{url} % Paquete para usar URL en el DOI. Hyperref es más completo. (23.06.2024)
+
+% TEXT BOXES (20.07.2024)
+\usepackage{tcolorbox}
+\newcommand{\widthtcolorbox}{16.5cm} % Custom width of the box. Use \begin{tcolorbox}[colback=white,colframe=black,width=\widthtcolorbox].
+
+% MORE SYMBOLS
+\usepackage{siunitx} %Unidades de magintudes físicas.
+
+% SAGEMATH
+% \usepackage{sagetex} % Doesn't work in Overleaf.
+
+%-----------------
+% New commands
+%Para identación de parráfo.
+\edef\restoreparindent{\parindent=\the\parindent\relax}
+\usepackage{parskip}
+\restoreparindent
+
+\usepackage{enumitem}
+\usepackage{subcaption}
+%\usepackage{etoolbox}
+\usepackage{wrapfig} % Para imágenes ajustado al texto.
+

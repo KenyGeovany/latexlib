@@ -1,0 +1,145 @@
+% Header and footer (18.06.2024)
+\fancyhead[L]{} %Clear the left side of the header. It is useful for sobreposition of headers.
+
+% Macro for abstract, keywords and DOI (23.06.2024)
+\newcommand{\myabstract}[1]{%
+  \begin{abstract}
+    #1
+  \end{abstract}
+}
+\newcommand{\keywords}[1]{%
+  \vspace{0.5cm}
+  \noindent \textbf{Keywords:} #1
+}
+\newcommand{\doi}[1]{%
+  \vspace{0.5cm}
+  \noindent \textbf{DOI:} \url{#1}
+} % Requires package url
+
+%Markers (22.08.2019)
+% Define the variable for enumeration style. (06.08.2024)
+\newcommand{\theonumber}{section} 
+% If documentclass is book, enumerate by chapter.
+\makeatletter 
+\@ifclassloaded{book}{
+  \renewcommand{\theonumber}{chapter}
+}{} % (06.08.2024)
+% Set environments (see amsthdoc.pdf for more possible commands. 06.08.2024)
+\theoremstyle{plain} % THEOREMS.
+\newtheorem{theorem}{Theorem}[\theonumber]
+\newtheorem{proposition}{Proposition}[\theonumber]
+\newtheorem{lemma}{Lemma}[\theonumber]
+\newtheorem{corollary}{Corollary}[\theonumber]
+\newtheorem{conjecture}{Conjecture}[\theonumber]
+\newtheorem{openproblem}{Open Problem}[\theonumber] % (07.08.2024)
+\newtheorem{famousproblem}{Famous Problem}[\theonumber] % (07.08.2024)
+\theoremstyle{definition} % DEFINITIONS
+\newtheorem{axiom}{Axiom}[\theonumber]
+\newtheorem{definition}{Definition}[\theonumber]
+\newtheorem{convention}{Convention}[\theonumber]
+\newtheorem{example}{Example}[\theonumber]
+\theoremstyle{remark} % REMARKS 
+\newtheorem{note}{Note}[\theonumber]
+\newtheorem{remark}{Remark}[\theonumber]
+\newtheorem{observation}{Observation}[\theonumber]
+\newtheorem{exercise}{Exercise}[\theonumber] %(04.06.2024)
+% QED symbol.
+%\renewcommand\qedsymbol{$\blacksquare$}
+
+% Custom colors: 23.07.2024
+% Is necesary usepackage{xcolor}
+% Predefined colors
+% red (Rojo), green (Verde claro), blue (Azul fuerte) 
+% yellow (Amarillo), cyan (Azul claro), magenta (Rosado) 
+% black (Negro), gray (Gris), white (Blanco)
+% brown (Café claro), orange (Anaranjado), purple (Rojizo) pink (Rosado palo)
+% lime (verde lima), teal (Turqueza), olive (Verde oliva)
+\definecolor{custom_red}{rgb}{0.6,0,0}
+\definecolor{custom_green}{rgb}{0,0.6,0}
+\definecolor{custom_blue}{rgb}{0,0,0.6}
+\definecolor{custom_gray}{rgb}{0.35,0.35,0.35} % Gray: the three values are equal.
+\definecolor{custom_purple}{rgb}{0.5,0,0.8} % (Morado)
+
+
+% Date: 14.07.2020
+% Tetration and other operators
+\DeclareRobustCommand{\triforce}{~\tikz[scale=0.11]\draw[black]
+  (1,0) -- +(120:2) --+(1,1.732050808) -- cycle
+  (0.5,0.8660254038) -- +(60:1)  --+(360:1)-- cycle
+  ;~}
+\DeclareRobustCommand{\infrad}{~\tikz[scale=0.16]\draw[black]
+  (0.2,0) -- (0.9,0) -- (0.5,0.8660254038) -- (2,0.8660254038) -- (1.6,0) -- (2.3,0)
+  ;~}
+\DeclareRobustCommand{\suprad}{\rotatebox[origin=c]{180}{$\infrad$}}
+\DeclareRobustCommand{\inflog}{~\scriptsize\rotatebox[origin=c]{0}{$\Omega$}~}
+\DeclareRobustCommand{\suplog}{~\scriptsize\rotatebox[origin=c]{180}{$\Omega$}~}
+
+%Math functions
+%---- Number theory
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\ind}{ind}
+%---- Calculus
+\DeclareMathOperator{\Div}{div}
+\DeclareMathOperator{\Grad}{grad}
+%---- Stadistic
+\DeclareMathOperator{\Mean}{mean}
+%---- Convex analysis
+\DeclareMathOperator{\Prox}{prox}
+%---- Lineal Algebra
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\trace}{trace} % (21.06.2024)
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+%----- Algebraic Geometry
+\DeclareMathOperator{\bfMod}{\textbf{Mod}} % (13.06.2024)
+\DeclareMathOperator{\Tor}{Tor} % (13.06.2024)
+\DeclareMathOperator{\Dom}{dom}
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\coker}{coker} % (13.06.2024)
+\DeclareMathOperator{\coimg}{coim} % (13.06.2024)
+\DeclareMathOperator{\aut}{Aut} % (13.06.2024)
+%----- Optimization
+\newcommand{\argmin}{\text{arg min}}
+%----- General commands
+
+\DeclareMathOperator{\suchthat}{\hspace{1mm}|\hspace{1mm}} %(25.06.2024)
+
+% Macros made by chatgpt for partial derivatives
+\newcommand{\der}[3]{\frac{d #1}{d #2} #3}
+\newcommand{\derp}[3]{\frac{\partial #1}{\partial #2} #3}
+\newcommand{\derpf}[2]{\triangle_{#2}^{+} #1}
+\newcommand{\derpb}[2]{\triangle_{#2}^{-} #1}
+
+%Paquete Tikz
+\usepackage{tikz}
+\usetikzlibrary{shadings, calc}
+
+
+% Fast comands for mathbb and mathcal (16.07.2024)
+\newcommand{\R}{\mathbb{R}} % Classic manner (22.06.2024)
+\def\do#1{\csdef{#1}{\mathbb{#1}}} % Fancy maner (22.06.2024)
+\docsvlist{N,Z,Q,C,D,T}
+% Add fast commands for mathcal letters (16.07.2024)
+\def\do#1{\csdef{#1#1}{\mathcal{#1}}}
+\docsvlist{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+
+
+
+%\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+%\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm
+%\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
+
+% Requires package mathtools 
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% (07.08.2024)
+% Comando para llaves. Funciona mejor que \begin{cases}.
+\newcommand{\leftcases}[2]{
+    \left\lbrace
+    \begin{array}{#1}
+        #2
+    \end{array}    
+    \right.
+}
+
+% Crear un mirror para \times con \x
