@@ -10,7 +10,10 @@
 % Set the font (output) encoding
 \usepackage[T1]{fontenc}
 % Specific commands
-\usepackage[spanish, english]{babel} % Adjust the key words and labels for example "Chapter" a "Capítulo". Select multiple lenguages with \selectlanguage{}, this command is open.
+% Adjust the key words and labels for example "Chapter" a "Capítulo". Select multiple lenguages with \selectlanguage{}, this command is open.
+% Warning: english must be before spanish for unexpected formating in the cover and bibliography.
+\usepackage[english, spanish]{babel} 
+
 \spanishdecimal{.} % Usar punto como separador decimal en vez de coma. Is incompatible con [russian]{babel}. Necessary.
 
 % MATH PACKAGES
@@ -159,4 +162,6 @@ To write algorithms with a stylized format.
 \usepackage{subcaption}
 %\usepackage{etoolbox}
 \usepackage{wrapfig} % Para imágenes ajustado al texto.
+
+%\usepackage{amsaddr} %Permite el uso de \address[A1,A2]{UADY \and CIMAT} con formato elegante.
 
