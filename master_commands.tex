@@ -43,6 +43,8 @@
 \newtheorem{remark}{Remark}[\theonumber]
 \newtheorem{observation}{Observation}[\theonumber]
 \newtheorem{exercise}{Exercise}[\theonumber] %(04.06.2024)
+\newtheorem{solution}{Solution}[\theonumber] %(20.08.2024)
+\newtheorem{question}{Question}[\theonumber] %(20.08.2024)
 % QED symbol.
 %\renewcommand\qedsymbol{$\blacksquare$}
 
@@ -144,3 +146,8 @@
 }
 
 % Crear un mirror para \times con \x
+% Crear begin{solution}
+
+\DeclareMathOperator{\then}{\hspace{1.5mm}\Rightarrow\hspace{1.5mm}} %(20.08.2024)
+
+\renewcommand{\intertext}[1]{\mbox{#1}} % No funcional todavía (20.08.2024)
