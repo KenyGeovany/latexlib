@@ -24,11 +24,11 @@
 \usepackage{mathtools} % Proporciona mejoras y extensiones para el entorno matemático en comparación con el paquete estándar amsmath.(lo carga automáticamente). Author: Lars Madsen.
 \usepackage{accents} % 04.06.2024 Para escrbir un acento encima de un símbolo de congruencia o equivalencia con \accentset{}.
 
-% ARROW DIAGRAMS (CATEGORY THEORY) AND KNOTS
-\usepackage[all,knot,cmtip]{xy}
-
 % COMENTARIES (21.07.2024)
 \usepackage{comment} % For multiline comentaries.
+
+% ARROW DIAGRAMS (CATEGORY THEORY) AND KNOTS
+\usepackage[all,knot,cmtip]{xy}
 
 % MARGINS AND ORIENTATION
 % Change the orientation of the page.
@@ -40,15 +40,29 @@
 % Style B
 \newcommand{\geometryB}{\geometry{margin=2cm}}
 % Choose a style
-\geometryA
+\makeatletter
+\@ifclassloaded{beamer}{
+}{  
+    % Set
+    \geometryA
+}
+\makeatother
+
 
 % CUSTOMIZED ENUMERATE PAGES [TESTED]
 \usepackage{fancyhdr} % Personaliza los encabezados y pies de página.
 \setlength{\headheight}{12.9pt} % Solves the problem in overleaf: Package fancyhdr Warning: \headheight is too small (12.0pt).
-\usepackage{lastpage} % Obtiene automáticamente el número total de páginas.
-\pagestyle{fancy} % Para las funciones de fancyhdr como cfoot, rfoot, etc.
-\cfoot{} % Limpiar el centro del pie de página
-\rfoot{página \thepage{} de \pageref{LastPage}} % Número de página a la derecha
+% If documentclass is not beamer then import lastpage.
+\makeatletter 
+\@ifclassloaded{beamer}{
+}{
+    % This separation is necessary.
+    \usepackage{lastpage} % Obtiene automáticamente el número total de páginas.
+    \pagestyle{fancy} % Para las funciones de fancyhdr como cfoot, rfoot, etc.
+    \cfoot{} % Limpiar el centro del pie de página
+    \rfoot{página \thepage{} de \pageref{LastPage}} % Número de página a la derecha
+} % (24.08.2024)
+% (24.08.2024)
 
 % IMAGES
 \usepackage{graphicx} % Allows the use of command includegraphics{}
@@ -66,15 +80,24 @@
 % For math text
 \usepackage{mathrsfs} % Latras estilizadas en diagonal. Use \mathscr{}. 
 \usepackage{euscript} % Letras estilizadas rectas. Use \EuScript{}.
-\usepackage{tgcursor} % Tipo de fuente monoespaciada basada en la fuente Courier. Es parte de la colección de fuentes TeX Gyre. Use \texttt{}.
+%%\usepackage{tgcursor} % Tipo de fuente monoespaciada basada en la fuente Courier. Es parte de la colección de fuentes TeX Gyre. Use \texttt{}. No es compatible con beamer, use \usepackage{lmodern}.
 \usepackage{MnSymbol} % Modifica el estilo de los símbolos matemáticos.
 
 % COLOR
-\usepackage[table,xcdraw]{xcolor} % Color font. 
-% To use definecolor{}{}{} % Defines custom color.
-% To use textcolor{}{} % Changes the color of text.
-% table: To use \rowcolor[HTML]{E0E0E0} which fills a row.
-% xcdraw: works with tikz, to use \fill[xcdraw] neverteless \draw is better.
+% If documentclass is not beamer then import lastpage.
+\makeatletter 
+\@ifpackageloaded{xcolor}{
+}{
+    % This separation is necessary.
+    \usepackage[table,xcdraw]{xcolor} % Color font.
+} % (24.08.2024)
+\makeatother
+\begin{comment} % (24.08.2024)
+- Command: definecolor{}{}{}: Defines custom color.
+- Command: textcolor{}{}: Changes the color of text.
+- With begin{table}: use \rowcolor[HTML]{E0E0E0} which fills a row.
+- xcdraw: works with tikz, to use \fill[xcdraw] neverteless \draw is better.
+\end{comment}
 
 % ENUMERATIONS AND LISTS
 % Redefinition of label format in numbered list: 1), 2), etc.
@@ -87,21 +110,47 @@
 
 % BIBLIOGRAPHY. Select one.
 % 1. BIBLATEX
-%\usepackage{biblatex}
-\begin{comment}
-- In main.tex out of \document: \addbibresource{referencias.bib}
-- You cite with: parentcite{} or cite{}
-- At the end of \document: \printbibliography
-- This package is run using the program biber instead of biblatex. For more information see
+\makeatletter 
+\@ifclassloaded{beamer}{%
+\usepackage[style=authoryear, sorting=ynt, defernumbers=true, backend=biber, useprefix=true]{biblatex}
+\setbeamertemplate{bibliography item}{%
+  \ifboolexpr{ test {\ifentrytype{book}} or test {\ifentrytype{mvbook}}
+    or test {\ifentrytype{collection}} or test {\ifentrytype{mvcollection}}
+    or test {\ifentrytype{reference}} or test {\ifentrytype{mvreference}} }
+    {\setbeamertemplate{bibliography item}[book]}
+    {\ifentrytype{online}
+       {\setbeamertemplate{bibliography item}[online]}
+       {\setbeamertemplate{bibliography item}[article]}}%
+  \usebeamertemplate{bibliography item}}
+}{%
+\usepackage[style=numeric, citestyle=numeric-comp,sorting=ynt, defernumbers=true, backend=biber]{biblatex}  % (24.08.2024)
+}
+\makeatother
+\usepackage{csquotes} % Using babel or polyglossia with biblatex, loading csquotes is recommended to ensure that quoted texts are typeset according to the rules of your main language.  % (24.08.2024)
+\renewcommand*{\bibfont}{\scriptsize} % Change size of text.
+\begin{comment} 
+- Compilation order: pdflatex mydocument.tex -> biber mydocument -> pdflatex mydocument.tex -> pdflatex mydocument.tex
+- In preamble: \addbibresource{referencias.bib}
+- Cite with: parentcite{} or cite{}
+- At the end of the body document: \printbibliography
+- Print all cites (including non referenced): \nocite{*} 
+- Uspackege options: 
+    * natbib=true: Enables commands of natbib.
+    * style=numeric: Defines the cites as numbers in brackets.
+    * citestyle=numeric-comp: Enables cites with numeric and compressed.
+    * sorting=ynt: Sorter the cites by Year-Name-Title.
+    * defernumbers=true: Delays the assignement of reference numbers until the references are sorted, for coherence.
+    * backend=biber: Use biber as backend.
+- This package is run using the program biber instead of bibtex. For more information see
     * https://tex.stackexchange.com/questions/406205/no-citation-bibdata-or-bibstyle-command
     * https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib/299286
 \end{comment}
 
 % 2. NATBIB
 % Load natbib with options for enumerate, order and compress cites in text: "1, 2, 3" -> "1-3".
-\usepackage[sort&compress]{natbib}
+%% \usepackage[sort&compress]{natbib}
 % Select a style: plain, unsrt, abbrv, acm, alpha, apalike, ieeetr, siam.
-\bibliographystyle{unsrt}
+%% \bibliographystyle{unsrt}
 \begin{comment}
 - You cite with: citep{} or cite{}
 - At the end of \document: \bibliography{referencias}{}
@@ -163,5 +212,9 @@ To write algorithms with a stylized format.
 %\usepackage{etoolbox}
 \usepackage{wrapfig} % Para imágenes ajustado al texto.
 
-%\usepackage{amsaddr} %Permite el uso de \address[A1,A2]{UADY \and CIMAT} con formato elegante.
+\makeatletter %(24.08.2024 NO TESTED)
+\@ifclassloaded{amsart}{
+    \usepackage{amsaddr} %Permite el uso de \address[A1,A2]{UADY \and CIMAT} con formato elegante.
+}{}
+\makeatother
 

@@ -23,27 +23,37 @@
 \makeatletter 
 \@ifclassloaded{book}{
   \renewcommand{\theonumber}{chapter}
-}{} % (06.08.2024)
+}{}\makeatother % (06.08.2024)
 % Set environments (see amsthdoc.pdf for more possible commands. 06.08.2024)
 \theoremstyle{plain} % THEOREMS.
-\newtheorem{theorem}{Theorem}[\theonumber]
+\makeatletter % Some thoerems in macros are predefined in beamer
+\@ifclassloaded{beamer}{}{  
+    \renewtheorem{theorem}{Theorem}[\theonumber]
+    \newtheorem{lemma}{Lemma}[\theonumber]
+    \newtheorem{corollary}{Corollary}[\theonumber]
+}\makeatother
 \newtheorem{proposition}{Proposition}[\theonumber]
-\newtheorem{lemma}{Lemma}[\theonumber]
-\newtheorem{corollary}{Corollary}[\theonumber]
 \newtheorem{conjecture}{Conjecture}[\theonumber]
 \newtheorem{openproblem}{Open Problem}[\theonumber] % (07.08.2024)
 \newtheorem{famousproblem}{Famous Problem}[\theonumber] % (07.08.2024)
 \theoremstyle{definition} % DEFINITIONS
 \newtheorem{axiom}{Axiom}[\theonumber]
-\newtheorem{definition}{Definition}[\theonumber]
+\makeatletter 
+\@ifclassloaded{beamer}{}{  
+    \newtheorem{definition}{Definition}[\theonumber]
+    \newtheorem{example}{Example}[\theonumber]
+}\makeatother
 \newtheorem{convention}{Convention}[\theonumber]
-\newtheorem{example}{Example}[\theonumber]
 \theoremstyle{remark} % REMARKS 
-\newtheorem{note}{Note}[\theonumber]
+\makeatletter 
+\@ifclassloaded{beamer}{}{  
+    \newtheorem{note}{Note}[\theonumber]
+    \newtheorem{solution}{Solution}[\theonumber] %(20.08.2024)
+}\makeatother
 \newtheorem{remark}{Remark}[\theonumber]
 \newtheorem{observation}{Observation}[\theonumber]
 \newtheorem{exercise}{Exercise}[\theonumber] %(04.06.2024)
-\newtheorem{solution}{Solution}[\theonumber] %(20.08.2024)
+
 \newtheorem{question}{Question}[\theonumber] %(20.08.2024)
 % QED symbol.
 %\renewcommand\qedsymbol{$\blacksquare$}
