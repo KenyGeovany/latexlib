@@ -180,14 +180,23 @@ To write algorithms with a stylized format.
 
 \usepackage{listings} % Allows to display source code with syntax highlighting. Use \begin{lstlisting}, \lstinline|| \lstset{}.
 
+\begin{comment}
+\end{comment}
 % HYPERLINKS
 \usepackage{hyperref} % Interactive links, for links, urls, etc.
 \hypersetup{
-    colorlinks=true,
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
 } % Configuration.
+\makeatletter
+\@ifclassloaded{beamer}{
+}{  
+    \hypersetup{colorlinks=true} % (25.08.2024)
+}
+\makeatother
+
+
 %\usepackage{url} % Paquete para usar URL en el DOI. Hyperref es más completo. (23.06.2024)
 
 % TEXT BOXES (20.07.2024)
