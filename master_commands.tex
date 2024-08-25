@@ -28,7 +28,7 @@
 \theoremstyle{plain} % THEOREMS.
 \makeatletter % Some thoerems in macros are predefined in beamer
 \@ifclassloaded{beamer}{}{  
-    \renewtheorem{theorem}{Theorem}[\theonumber]
+    \newtheorem{theorem}{Theorem}[\theonumber]
     \newtheorem{lemma}{Lemma}[\theonumber]
     \newtheorem{corollary}{Corollary}[\theonumber]
 }\makeatother
