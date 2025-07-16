@@ -135,11 +135,13 @@
 % Fast comands for mathbb and mathcal (16.07.2024)
 \newcommand{\R}{\mathbb{R}} % Classic manner (22.06.2024)
 \def\do#1{\csdef{#1}{\mathbb{#1}}} % Fancy maner (22.06.2024)
-\docsvlist{N,Z,Q,C,D,T}
+\docsvlist{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
 % Add fast commands for mathcal letters (16.07.2024)
 \def\do#1{\csdef{#1#1}{\mathcal{#1}}}
 \docsvlist{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
-
+% Add fast commands for fraktur letters (16.07.2025)
+\def\do#1{\csdef{mf#1}{\mathfrak{#1}}}
+\docsvlist{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z}
 
 
 %\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
@@ -166,3 +168,11 @@
 \DeclareMathOperator{\then}{\hspace{1.5mm}\Rightarrow\hspace{1.5mm}} %(20.08.2024)
 
 \renewcommand{\intertext}[1]{\mbox{#1}} % No funcional todavía (20.08.2024)
+
+% Para definir funciones (08.07.2025)
+\newcommand{\fundef}[5]{%
+  \begin{array}{rrcl}
+    #1 :& #2 & \longrightarrow & #3 \\
+    & #4 & \longmapsto & #5
+  \end{array}
+}
