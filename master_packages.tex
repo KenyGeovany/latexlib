@@ -48,6 +48,15 @@
 }
 \makeatother
 
+% TITLE SECTION FONT AND SIZE (2025.06.25)
+% \fontsize{size}{line spacing, typically size+6}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\fontsize{14}{20}\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12}{18}\bfseries}
+  {\thesubsection}{1em}{}
 
 % CUSTOMIZED ENUMERATE PAGES [TESTED]
 \usepackage{fancyhdr} % Personaliza los encabezados y pies de página.
@@ -227,3 +236,6 @@ To write algorithms with a stylized format.
 }{}
 \makeatother
 
+%(12.06.2024) Repited in thesis
+%\bm{\alpha}
+\usepackage{bm} %Greek letters in Bold font
