@@ -25,7 +25,32 @@
   \renewcommand{\theonumber}{chapter}
 }{}\makeatother % (06.08.2024)
 % Set environments (see amsthdoc.pdf for more possible commands. 06.08.2024)
-\theoremstyle{plain} % THEOREMS.
+
+% THEOREMS.
+% New styles with space
+\newtheoremstyle{plain2}%
+  {8pt}   % espacio arriba
+  {4pt}    % espacio abajo
+  {\itshape}  % Body text
+  {}       % indentation
+  {\bfseries} % Header
+  {.}
+  { }    % point and space after header
+  {}
+  
+% definition with space
+\newtheoremstyle{definition2}%
+  {8pt}{4pt}
+  {\normalfont}{}{\bfseries}
+  {.}{ }{}
+
+% remark with space
+\newtheoremstyle{remark2}%
+  {8pt}{4pt}
+  {\normalfont}{}{\itshape}
+  {.}{ }{}
+  
+\theoremstyle{plain2} 
 \makeatletter % Some thoerems in macros are predefined in beamer
 \@ifclassloaded{beamer}{}{  
     \newtheorem{theorem}{Theorem}[\theonumber]
@@ -36,7 +61,8 @@
 \newtheorem{conjecture}{Conjecture}[\theonumber]
 \newtheorem{openproblem}{Open Problem}[\theonumber] % (07.08.2024)
 \newtheorem{famousproblem}{Famous Problem}[\theonumber] % (07.08.2024)
-\theoremstyle{definition} % DEFINITIONS
+
+\theoremstyle{definition2} % DEFINITIONS
 \newtheorem{axiom}{Axiom}[\theonumber]
 \makeatletter 
 \@ifclassloaded{beamer}{}{  
@@ -44,7 +70,8 @@
     \newtheorem{example}{Example}[\theonumber]
 }\makeatother
 \newtheorem{convention}{Convention}[\theonumber]
-\theoremstyle{remark} % REMARKS 
+
+\theoremstyle{remark2} % REMARKS 
 \makeatletter 
 \@ifclassloaded{beamer}{}{  
     \newtheorem{note}{Note}[\theonumber]
@@ -71,7 +98,6 @@
 \definecolor{custom_blue}{rgb}{0,0,0.6}
 \definecolor{custom_gray}{rgb}{0.35,0.35,0.35} % Gray: the three values are equal.
 \definecolor{custom_purple}{rgb}{0.5,0,0.8} % (Morado)
-
 
 % Date: 19.05.2025 (28.03.2016, 14.07.2020)
 % Tetration and other operators
