@@ -73,19 +73,34 @@
 \definecolor{custom_purple}{rgb}{0.5,0,0.8} % (Morado)
 
 
-% Date: 14.07.2020 (28.03.2016)
+% Date: 19.05.2025 (28.03.2016, 14.07.2020)
 % Tetration and other operators
-\DeclareRobustCommand{\suppot}{~\tikz[scale=0.11]\draw[black]
+\DeclareRobustCommand{\suppot}{~\tikz[scale=0.15]\draw[black]
   (1,0) -- +(120:2) --+(1,1.732050808) -- cycle
   (0.5,0.8660254038) -- +(60:1)  --+(360:1)-- cycle
   ;~}
-\DeclareRobustCommand{\infrad}{~\tikz[scale=0.16]\draw[black]
+\DeclareRobustCommand{\msuppot}{~\tikz[scale=0.09]\draw[black]
+  (1,0) -- +(120:2) --+(1,1.732050808) -- cycle
+  (0.5,0.8660254038) -- +(60:1)  --+(360:1)-- cycle
+  ;~} % 19.05.2025
+  
+\DeclareRobustCommand{\infrad}{\text{\small\rotatebox[origin=c]{0}{$\hspace{1mm}\Omega \hspace{1mm}$}}}
+\DeclareRobustCommand{\minfrad}{\text{\rotatebox[origin=c]{0}{$\scriptstyle\hspace{1mm}\Omega\hspace{1mm}$}}}
+
+\DeclareRobustCommand{\sublog}{\rotatebox[origin=c]{180}{$\infrad$}}
+\DeclareRobustCommand{\msublog}{\rotatebox[origin=c]{180}{$\minfrad$}} % 19.05.2025
+
+\DeclareRobustCommand{\hippot}{\boxtimes}
+
+\DeclareRobustCommand{\suprad}{~\tikz[scale=0.2]\draw[black]
   (0.2,0) -- (0.9,0) -- (0.5,0.8660254038) -- (2,0.8660254038) -- (1.6,0) -- (2.3,0)
   ;~}
-\DeclareRobustCommand{\suprad}{\rotatebox[origin=c]{180}{$\infrad$}}
-\DeclareRobustCommand{\inflog}{\text{\small\rotatebox[origin=c]{0}{$\hspace{1mm}\Omega \hspace{1mm}$}}}
-\DeclareRobustCommand{\suplog}{\text{\small\rotatebox[origin=c]{180}{$\hspace{1mm}\Omega \hspace{1mm}$}}}
-\DeclareRobustCommand{\hippot}{\boxtimes}
+\DeclareRobustCommand{\msuprad}{~\tikz[scale=0.12]\draw[black]
+  (0.2,0) -- (0.9,0) -- (0.5,0.8660254038) -- (2,0.8660254038) -- (1.6,0) -- (2.3,0)
+  ;~} % 19.05.2025
+
+\DeclareRobustCommand{\hiplog}{\text{\small\rotatebox[origin=c]{180}{$\hspace{1mm}\suprad \hspace{1mm}$}}}
+\DeclareRobustCommand{\mhiplog}{\text{\rotatebox[origin=c]{180}{$\hspace{1mm}\msuprad \hspace{1mm}$}}}
 
 %Math functions
 %---- Number theory
@@ -117,7 +132,7 @@
 %----- Optimization
 \newcommand{\argmin}{\text{arg min}}
 %----- General commands
-
+\DeclareMathOperator{\Log}{Log} %(05.2025)
 \DeclareMathOperator{\suchthat}{\hspace{1mm}|\hspace{1mm}} %(25.06.2024)
 
 
@@ -175,4 +190,12 @@
     #1 :& #2 & \longrightarrow & #3 \\
     & #4 & \longmapsto & #5
   \end{array}
+}
+
+% Defintion with equality command a ==^{def} b (05.2025)
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+
+% Change label Cuadro by Tabla in spanish environment. (05.2025)
+\addto\captionsspanish{%
+  \renewcommand{\tablename}{Tabla}%
 }
