@@ -239,3 +239,8 @@ To write algorithms with a stylized format.
 %(12.06.2024) Repited in thesis
 %\bm{\alpha}
 \usepackage{bm} %Greek letters in Bold font
+
+% Redefine spaces in prood environmnet (17.07.2025)
+\usepackage{etoolbox}
+\pretocmd{\proof}{\vspace{0pt}}{}{}  % above
+\apptocmd{\endproof}{\vspace{0pt}}{}{}  % below

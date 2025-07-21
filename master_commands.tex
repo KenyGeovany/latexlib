@@ -27,7 +27,7 @@
 % Set environments (see amsthdoc.pdf for more possible commands. 06.08.2024)
 
 % THEOREMS.
-% New styles with space
+% New styles with space (16.07.2025)
 \newtheoremstyle{plain2}%
   {8pt}   % espacio arriba
   {4pt}    % espacio abajo
@@ -38,13 +38,13 @@
   { }    % point and space after header
   {}
   
-% definition with space
+% definition with space (17.07.2025)
 \newtheoremstyle{definition2}%
   {8pt}{4pt}
   {\normalfont}{}{\bfseries}
   {.}{ }{}
 
-% remark with space
+% remark with space (17.07.2025)
 \newtheoremstyle{remark2}%
   {8pt}{4pt}
   {\normalfont}{}{\itshape}
@@ -133,8 +133,6 @@
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\ind}{ind}
 \DeclareMathOperator{\supp}{supp} % (15.09.2024)
-\DeclareMathOperator{\rad}{rad} % (16.09.2024)
-\DeclareMathOperator{\Spec}{Spec} % (17.09.2024)
 \DeclareMathOperator{\power}{power} % (17.09.2024)
 %---- Calculus
 \DeclareMathOperator{\Div}{div}
@@ -148,13 +146,19 @@
 \DeclareMathOperator{\trace}{trace} % (21.06.2024)
 \newcommand{\vect}[1]{\boldsymbol{#1}}
 %----- Algebraic Geometry
-\DeclareMathOperator{\bfMod}{\textbf{Mod}} % (13.06.2024)
-\DeclareMathOperator{\Tor}{Tor} % (13.06.2024)
-\DeclareMathOperator{\Dom}{dom}
+\DeclareMathOperator{\rad}{rad} % (16.09.2024)
+\DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\img}{img}
 \DeclareMathOperator{\coker}{coker} % (13.06.2024)
-\DeclareMathOperator{\coimg}{coim} % (13.06.2024)
-\DeclareMathOperator{\aut}{Aut} % (13.06.2024)
+\DeclareMathOperator{\coimg}{coimg} % (13.06.2024)
+\DeclareMathOperator{\Spec}{Spec} % (17.09.2024)
+\DeclareMathOperator{\Gal}{Gal} %(21.07.2025)
+\DeclareMathOperator{\bfMod}{\textbf{Mod}} % (13.06.2024)
+\DeclareMathOperator{\Tor}{Tor} % (13.06.2024)
+\DeclareMathOperator{\Ann}{Ann} % (21.07.2025)
+\DeclareMathOperator{\Aut}{Aut} % (13.06.2024)
+\DeclareMathOperator{\Hom}{Hom} %(21.07.2025)
+\DeclareMathOperator{\End}{End} %(21.07.2025)
 %----- Optimization
 \newcommand{\argmin}{\text{arg min}}
 %----- General commands
@@ -203,7 +207,6 @@
     \right.
 }
 
-% Crear un mirror para \times con \x
 % Crear begin{solution}
 
 \DeclareMathOperator{\then}{\hspace{1.5mm}\Rightarrow\hspace{1.5mm}} %(20.08.2024)
@@ -225,3 +228,7 @@
 \addto\captionsspanish{%
   \renewcommand{\tablename}{Tabla}%
 }
+
+% Mirror of \times (17.07.2025)
+\newcommand{\x}{\ensuremath{\times}}
+
